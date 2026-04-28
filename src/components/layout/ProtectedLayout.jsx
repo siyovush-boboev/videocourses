@@ -9,6 +9,7 @@ function ProtectedLayout({
   pathname,
   onLogoClick,
   onAdminPanelClick,
+  onOpenProfile,
   children,
 }) {
   return (
@@ -21,6 +22,7 @@ function ProtectedLayout({
         pathname={pathname}
         onLogoClick={onLogoClick}
         onAdminPanelClick={onAdminPanelClick}
+        onOpenProfile={onOpenProfile}
       />
       <main className="content">
         <div className="content__inner">{children}</div>

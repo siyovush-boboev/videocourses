@@ -13,6 +13,7 @@ function Header({
   onLogoClick,
   onAdminPanelClick,
   onLoginClick,
+  onOpenProfile,
 }) {
   const isAdmin = session?.role === 'admin'
   const shouldShowLoginButton = !session && pathname !== '/login'
@@ -51,7 +52,11 @@ function Header({
               ) : null}
               <div className="header__user-group">
                 <p className="user-name">{session.name}</p>
-                <ProfileMenu copy={copy} session={session} />
+                <ProfileMenu
+                  copy={copy}
+                  session={session}
+                  onOpenProfile={onOpenProfile}
+                />
               </div>
             </div>
           </>

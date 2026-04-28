@@ -35,6 +35,7 @@ function AppContent() {
       pathname === '/' || pathname === '/login' || Boolean(selectedPublicCourse)
     const isProtectedPath =
       pathname === '/admin' ||
+      pathname === '/profile' ||
       /^\/courses\/[^/]+\/test$/.test(pathname) ||
       /^\/courses\/[^/]+\/test\/result$/.test(pathname) ||
       /^\/courses\/[^/]+\/certificate\/[^/]+$/.test(pathname)
@@ -65,6 +66,7 @@ function AppContent() {
     const isAllowedSignedInPath =
       pathname === '/' ||
       pathname === '/admin' ||
+      pathname === '/profile' ||
       pathname === '/login' ||
       /^\/courses\/[^/]+$/.test(pathname) ||
       /^\/courses\/[^/]+\/test$/.test(pathname) ||

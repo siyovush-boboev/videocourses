@@ -3,7 +3,7 @@ import useAuth from '../../hooks/useAuth'
 import useClickOutside from '../../hooks/useClickOutside'
 import UserIcon from '../icons/UserIcon'
 
-function ProfileMenu({ copy, session }) {
+function ProfileMenu({ copy, session, onOpenProfile }) {
   const [isOpen, setIsOpen] = useState(false)
   const rootRef = useRef(null)
   const { signOut } = useAuth()
@@ -35,7 +35,14 @@ function ProfileMenu({ copy, session }) {
             </div>
           </div>
 
-          <button type="button" className="profile-popover__action">
+          <button
+            type="button"
+            className="profile-popover__action"
+            onClick={() => {
+              setIsOpen(false)
+              onOpenProfile?.()
+            }}
+          >
             {copy.header.profile}
           </button>
           <button
