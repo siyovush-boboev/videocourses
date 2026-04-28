@@ -9,36 +9,34 @@ import TestPage from './TestPage'
 import TestResultPage from './TestResultPage'
 
 const buildCertificateNumber = (courseId, sessionId) => {
-  const stamp = new Date().toISOString().slice(0, 10).replaceAll('-', '')
-  const compactCourseId = courseId.slice(0, 4).toUpperCase()
-  const compactSessionId = sessionId.replace(/[^a-zA-Z0-9]/g, '').slice(-4).toUpperCase()
-  return `ARV-${stamp}-${compactSessionId}-${compactCourseId}`
+  const compactCourseId = courseId.replace(/[^a-zA-Z0-9]/g, '').slice(0, 6).toUpperCase()
+  const compactSessionId = sessionId.replace(/[^a-zA-Z0-9]/g, '').slice(-6).toUpperCase()
+  return `ARV-${compactSessionId}-${compactCourseId}`
 }
 
 function DashboardPage({ copy, language, setLanguage, session, pathname, navigateTo }) {
   const [testResults, setTestResults] = useState({})
-  const isCertificatePath =
-    pathname.startsWith('/courses/') && pathname.endsWith('/certificate')
-  const isTestResultPath =
-    pathname.startsWith('/courses/') && pathname.endsWith('/test/result')
-  const isTestPath =
-    pathname.startsWith('/courses/') &&
-    pathname.endsWith('/test') &&
-    !isTestResultPath &&
-    !isCertificatePath
-  const courseId = isCertificatePath
-    ? pathname.replace('/courses/', '').replace('/certificate', '')
-    : isTestResultPath
-    ? pathname.replace('/courses/', '').replace('/test/result', '')
-    : isTestPath
-      ? pathname.replace('/courses/', '').replace('/test', '')
-      : pathname.startsWith('/courses/')
-        ? pathname.replace('/courses/', '')
-        : null
+  const certificateMatch = pathname.match(/^\/courses\/([^/]+)\/certificate\/([^/]+)$/)
+  const testResultMatch = pathname.match(/^\/courses\/([^/]+)\/test\/result$/)
+  const testMatch = pathname.match(/^\/courses\/([^/]+)\/test$/)
+  const courseMatch = pathname.match(/^\/courses\/([^/]+)$/)
+  const isCertificatePath = Boolean(certificateMatch)
+  const isTestResultPath = Boolean(testResultMatch)
+  const isTestPath = Boolean(testMatch)
+  const courseId = certificateMatch?.[1] ||
+    testResultMatch?.[1] ||
+    testMatch?.[1] ||
+    courseMatch?.[1] ||
+    null
   const selectedCourse = courseId
     ? mockCourses.find((course) => course.id === courseId)
     : null
   const selectedResult = courseId ? testResults[courseId] : null
+  const selectedCertificateNumber = certificateMatch?.[2] || null
+  const expectedCertificateNumber =
+    selectedCourse && session
+      ? buildCertificateNumber(selectedCourse.id, session.id)
+      : null
 
   const handleLogoClick = () => {
     navigateTo('/')
@@ -68,7 +66,9 @@ function DashboardPage({ copy, language, setLanguage, session, pathname, navigat
   }
 
   const handleOpenCertificate = (id) => {
-    navigateTo(`/courses/${id}/certificate`)
+    navigateTo(
+      `/courses/${id}/certificate/${buildCertificateNumber(id, session.id)}`,
+    )
   }
 
   const handleTestComplete = (courseIdToSave, result) => {
@@ -82,8 +82,7 @@ function DashboardPage({ copy, language, setLanguage, session, pathname, navigat
   let content = <CoursesPage copy={copy} language={language} onOpenCourse={handleOpenCourse} />
   const canViewCertificate =
     selectedCourse &&
-    selectedResult &&
-    selectedResult.score >= selectedCourse.test.passingPoints
+    selectedCertificateNumber === expectedCertificateNumber
 
   if (pathname === '/admin') {
     content = <AdminOverview copy={copy} />
@@ -93,12 +92,13 @@ function DashboardPage({ copy, language, setLanguage, session, pathname, navigat
         copy={{ ...copy, languageKey: language }}
         course={selectedCourse}
         session={session}
-        certificateNumber={buildCertificateNumber(selectedCourse.id, session.id)}
+        certificateNumber={expectedCertificateNumber}
         issuedDate={new Date().toLocaleDateString(
           language === 'ru' ? 'ru-RU' : 'tg-TJ',
         )}
         verifyUrl={window.location.href}
         onOpenCourse={handleOpenCourse}
+        onGoHome={handleLogoClick}
       />
     )
   } else if (selectedCourse && isCertificatePath) {

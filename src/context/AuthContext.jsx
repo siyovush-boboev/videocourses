@@ -22,8 +22,7 @@ function AuthProvider({ children }) {
     if (!matchedUser) {
       return {
         ok: false,
-        error:
-          'Неверный логин или пароль. Используйте тестовый аккаунт администратора или сотрудника.',
+        error: 'Неверный логин или пароль.',
       }
     }
 

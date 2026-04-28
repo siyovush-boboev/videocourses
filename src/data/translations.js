@@ -62,6 +62,7 @@ const translations = {
       roleBadgeUser: 'Сотрудник',
     },
     header: {
+      login: 'Войти',
       adminPanel: 'Админ панель',
       profile: 'Профиль',
       signOut: 'Выйти',
@@ -106,6 +107,8 @@ const translations = {
       dateLabel: 'Дата:',
       numberLabel: 'Уникальный номер:',
       verifyLabel: 'Проверка подлинности',
+      openCourse: 'Перейти к курсу',
+      goHome: 'Перейти на главную',
       downloadPdf: 'Скачать в PDF',
     },
     dashboard: {
@@ -186,6 +189,7 @@ const translations = {
       roleBadgeUser: 'Корманд',
     },
     header: {
+      login: 'Ворид шудан',
       adminPanel: 'Панели админ',
       profile: 'Профил',
       signOut: 'Баромадан',
@@ -231,6 +235,8 @@ const translations = {
       dateLabel: 'Сана:',
       numberLabel: 'Рақами беназир:',
       verifyLabel: 'Санҷиши аслӣ',
+      openCourse: 'Гузаштан ба курс',
+      goHome: 'Гузаштан ба саҳифаи асосӣ',
       downloadPdf: 'Боргирӣ ҳамчун PDF',
     },
     dashboard: {

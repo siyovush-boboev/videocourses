@@ -2,6 +2,7 @@ import logo from '../../assets/Logo.png'
 import LanguageSelect from './LanguageSelect'
 import ProfileMenu from './ProfileMenu'
 import ShieldIcon from '../icons/ShieldIcon'
+import LoginArrowIcon from '../icons/LoginArrowIcon'
 
 function Header({
   copy,
@@ -11,8 +12,10 @@ function Header({
   pathname,
   onLogoClick,
   onAdminPanelClick,
+  onLoginClick,
 }) {
   const isAdmin = session?.role === 'admin'
+  const shouldShowLoginButton = !session && pathname !== '/login'
   const headerInnerClassName = session
     ? 'header__inner header__inner--protected'
     : 'header__inner header__inner--public'
@@ -54,9 +57,9 @@ function Header({
           </>
         ) : (
           <>
-            <div className="brand">
+            <button type="button" className="brand brand--button" onClick={onLogoClick}>
               <img className="brand__logo" src={logo} alt="Videocourses" />
-            </div>
+            </button>
 
             <div className="header__actions">
               <LanguageSelect
@@ -64,6 +67,16 @@ function Header({
                 language={language}
                 setLanguage={setLanguage}
               />
+              {shouldShowLoginButton ? (
+                <button
+                  type="button"
+                  className="login-button"
+                  onClick={onLoginClick}
+                >
+                  <LoginArrowIcon />
+                  {copy.header.login}
+                </button>
+              ) : null}
             </div>
           </>
         )}

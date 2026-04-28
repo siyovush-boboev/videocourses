@@ -1,4 +1,8 @@
 function CourseDetailPage({ copy, course, language, onOpenTest }) {
+  const requiredPercent = Math.round(
+    (course.test.passingPoints / course.test.questions) * 100,
+  )
+
   return (
     <section className="course-detail-page">
       <div className="course-detail-page__header">
@@ -35,7 +39,9 @@ function CourseDetailPage({ copy, course, language, onOpenTest }) {
           </div>
           <div className="course-test-card__item">
             <dt>{copy.courseDetail.passingPoints}</dt>
-            <dd>{course.test.passingPoints}%</dd>
+            <dd>
+              {course.test.passingPoints} ({requiredPercent}%)
+            </dd>
           </div>
           <div className="course-test-card__item">
             <dt>{copy.courseDetail.maxTries}</dt>

@@ -139,6 +139,7 @@ function CertificatePage({
   issuedDate,
   verifyUrl,
   onOpenCourse,
+  onGoHome,
 }) {
   const qrCanvasRef = useRef(null)
 
@@ -266,6 +267,23 @@ function CertificatePage({
       >
         {copy.certificate.downloadPdf}
       </button>
+
+      <div className="certificate-actions">
+        <button
+          type="button"
+          className="certificate-action-button"
+          onClick={() => onOpenCourse(course.id)}
+        >
+          {copy.certificate.openCourse}
+        </button>
+        <button
+          type="button"
+          className="certificate-action-button"
+          onClick={onGoHome}
+        >
+          {copy.certificate.goHome}
+        </button>
+      </div>
     </section>
   )
 }

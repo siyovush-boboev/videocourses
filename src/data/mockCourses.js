@@ -22,7 +22,7 @@ const mockCourses = [
     test: {
       questions: 3,
       options: 4,
-      passingPoints: 80,
+      passingPoints: 2,
       maxTries: 3,
     },
     testItems: [
@@ -87,7 +87,7 @@ const mockCourses = [
     test: {
       questions: 3,
       options: 4,
-      passingPoints: 75,
+      passingPoints: 2,
       maxTries: 2,
     },
     testItems: [
@@ -152,7 +152,7 @@ const mockCourses = [
     test: {
       questions: 3,
       options: 4,
-      passingPoints: 85,
+      passingPoints: 3,
       maxTries: 3,
     },
     testItems: [
@@ -217,7 +217,7 @@ const mockCourses = [
     test: {
       questions: 3,
       options: 4,
-      passingPoints: 80,
+      passingPoints: 2,
       maxTries: 2,
     },
     testItems: [

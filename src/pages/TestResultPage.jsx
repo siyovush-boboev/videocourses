@@ -10,10 +10,13 @@ function TestResultPage({
   onGoHome,
   onViewCertificate,
 }) {
-  const isPassed = result.score >= course.test.passingPoints
+  const isPassed = result.correctAnswers >= course.test.passingPoints
+  const requiredPercent = Math.round(
+    (course.test.passingPoints / result.totalQuestions) * 100,
+  )
   const failText = copy.test.resultFailText
     .replace('{points}', String(course.test.passingPoints))
-    .replace('{percent}', `${course.test.passingPoints}%`)
+    .replace('{percent}', `${requiredPercent}%`)
 
   return (
     <section className="test-result-page">

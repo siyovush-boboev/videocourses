@@ -53,7 +53,9 @@ function LoginForm({ copy }) {
 
     setFormData(nextFormData)
     setFieldErrors((current) => ({ ...current, [name]: '' }))
+  }
 
+  const handleFocus = () => {
     if (error) {
       setError('')
     }
@@ -83,14 +85,15 @@ function LoginForm({ copy }) {
 
   return (
     <div className="auth-panel">
-      <form className="auth-form" onSubmit={handleSubmit}>
+      <form className="auth-form" onSubmit={handleSubmit} noValidate>
         <label className="auth-field">
           <span>{copy.auth.loginLabel}</span>
           <input
-            type="email"
+            type="text"
             name="email"
             value={formData.email}
             onChange={handleChange}
+            onFocus={handleFocus}
             autoComplete="username"
             className={fieldErrors.email ? 'is-invalid' : ''}
           />
@@ -107,6 +110,7 @@ function LoginForm({ copy }) {
               name="password"
               value={formData.password}
               onChange={handleChange}
+              onFocus={handleFocus}
               autoComplete="current-password"
               className={fieldErrors.password ? 'is-invalid' : ''}
             />
@@ -129,7 +133,9 @@ function LoginForm({ copy }) {
           ) : null}
         </label>
 
-        {error ? <p className="auth-error">{error}</p> : null}
+        <div className="auth-error-slot" aria-live="polite">
+          {error ? <p className="auth-error">{error}</p> : null}
+        </div>
 
         <div className="auth-actions">
           <button type="submit" className="auth-submit">
