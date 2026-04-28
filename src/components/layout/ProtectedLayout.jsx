@@ -6,6 +6,9 @@ function ProtectedLayout({
   language,
   setLanguage,
   session,
+  pathname,
+  onLogoClick,
+  onAdminPanelClick,
   children,
 }) {
   return (
@@ -15,6 +18,9 @@ function ProtectedLayout({
         language={language}
         setLanguage={setLanguage}
         session={session}
+        pathname={pathname}
+        onLogoClick={onLogoClick}
+        onAdminPanelClick={onAdminPanelClick}
       />
       <main className="content">
         <div className="content__inner">{children}</div>

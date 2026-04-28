@@ -68,6 +68,46 @@ const translations = {
       roleAdmin: 'Администратор',
       roleUser: 'Сотрудник',
     },
+    courses: {
+      title: 'Онлайн-курс по обучающим темам',
+      description:
+        'Пройдите обучение по ключевым направлениям и получите сертификат при успешной сдаче теста.',
+      action: 'Пройти курс',
+    },
+    courseDetail: {
+      videoTitle: 'Видео курса',
+      infoTitle: 'Информация об этом курсе',
+      questions: 'Количество вопросов',
+      options: 'Количество вариантов ответа',
+      passingPoints: 'Баллы для прохождения',
+      maxTries: 'Максимум попыток',
+      action: 'Пройти тест',
+    },
+    test: {
+      questionNumber: 'Вопрос',
+      back: 'Назад',
+      nextQuestion: 'Следующий вопрос',
+      finish: 'Завершить',
+      resultSuccessTitle: 'Поздравляем! Тест сдан',
+      resultSuccessText: 'Вы набрали проходной балл и получили сертификат!',
+      resultFailTitle: 'Тест не пройден',
+      resultFailText: 'Необходимо набрать {points} баллов ({percent}) для получения сертификата',
+      certificateTitle: 'Ваш сертификат',
+      certificateText:
+        'Сертификат был успешно сформирован. Вы можете скачать его или посмотреть в профиле.',
+      viewCertificate: 'Посмотреть сертификат',
+      goHome: 'Перейти на главную',
+      retake: 'Пересдать тест',
+    },
+    certificate: {
+      title: 'Сертификат',
+      intro: 'Настоящим подтверждается, что',
+      programText: 'успешно завершил обучение по программе',
+      dateLabel: 'Дата:',
+      numberLabel: 'Уникальный номер:',
+      verifyLabel: 'Проверка подлинности',
+      downloadPdf: 'Скачать в PDF',
+    },
     dashboard: {
       admin: {
         label: 'Административный режим',
@@ -151,6 +191,47 @@ const translations = {
       signOut: 'Баромадан',
       roleAdmin: 'Админ',
       roleUser: 'Корманд',
+    },
+    courses: {
+      title: 'Курси онлайн оид ба мавзӯъҳои таълимӣ',
+      description:
+        'Омӯзишро дар соҳаҳои асосӣ хатм кунед ва пас аз бомуваффақият анҷом додани имтиҳон шаҳодатнома гиред.',
+      action: 'Гузаштан ба курс',
+    },
+    courseDetail: {
+      videoTitle: 'Видеои курс',
+      infoTitle: 'Маълумот дар бораи ин курс',
+      questions: 'Шумораи саволҳо',
+      options: 'Шумораи вариантҳои ҷавоб',
+      passingPoints: 'Хол барои гузаштан',
+      maxTries: 'Ҳадди аксари кӯшишҳо',
+      action: 'Гузаштан ба тест',
+    },
+    test: {
+      questionNumber: 'Савол',
+      back: 'Бозгашт',
+      nextQuestion: 'Саволи навбатӣ',
+      finish: 'Анҷом додан',
+      resultSuccessTitle: 'Табрик! Тест супорида шуд',
+      resultSuccessText: 'Шумо холи гузаришро гирифтед ва сертификат ба даст овардед!',
+      resultFailTitle: 'Тест гузаронида нашуд',
+      resultFailText:
+        'Барои гирифтани сертификат бояд {points} хол ({percent}) ба даст оваред',
+      certificateTitle: 'Сертификати шумо',
+      certificateText:
+        'Сертификат бомуваффақият омода шуд. Шумо метавонед онро боргирӣ кунед ё дар профил бинед.',
+      viewCertificate: 'Дидани сертификат',
+      goHome: 'Гузаштан ба саҳифаи асосӣ',
+      retake: 'Аз нав супоридан',
+    },
+    certificate: {
+      title: 'Сертификат',
+      intro: 'Бо ин тасдиқ карда мешавад, ки',
+      programText: 'омӯзишро аз рӯи барнома бомуваффақият анҷом дод',
+      dateLabel: 'Сана:',
+      numberLabel: 'Рақами беназир:',
+      verifyLabel: 'Санҷиши аслӣ',
+      downloadPdf: 'Боргирӣ ҳамчун PDF',
     },
     dashboard: {
       admin: {
