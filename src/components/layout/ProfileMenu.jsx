@@ -1,12 +1,16 @@
 import { useRef, useState } from 'react'
 import useAuth from '../../hooks/useAuth'
 import useClickOutside from '../../hooks/useClickOutside'
+import HomeOutlineIcon from '../icons/HomeOutlineIcon'
+import LogoutOutlineIcon from '../icons/LogoutOutlineIcon'
+import ShieldIcon from '../icons/ShieldIcon'
 import UserIcon from '../icons/UserIcon'
 
-function ProfileMenu({ copy, session, onOpenProfile }) {
+function ProfileMenu({ copy, session, onGoHome, onOpenAdminPanel, onOpenProfile }) {
   const [isOpen, setIsOpen] = useState(false)
   const rootRef = useRef(null)
   const { signOut } = useAuth()
+  const isAdmin = session?.role === 'admin'
 
   useClickOutside(rootRef, () => setIsOpen(false), isOpen)
 
@@ -35,6 +39,30 @@ function ProfileMenu({ copy, session, onOpenProfile }) {
             </div>
           </div>
 
+          {isAdmin ? (
+            <button
+              type="button"
+              className="profile-popover__action"
+              onClick={() => {
+                setIsOpen(false)
+                onOpenAdminPanel?.()
+              }}
+            >
+              <ShieldIcon />
+              {copy.header.adminPanel}
+            </button>
+          ) : null}
+          <button
+            type="button"
+            className="profile-popover__action"
+            onClick={() => {
+              setIsOpen(false)
+              onGoHome?.()
+            }}
+          >
+            <HomeOutlineIcon />
+            {copy.header.allCourses}
+          </button>
           <button
             type="button"
             className="profile-popover__action"
@@ -42,7 +70,8 @@ function ProfileMenu({ copy, session, onOpenProfile }) {
               setIsOpen(false)
               onOpenProfile?.()
             }}
-          >
+            >
+            <UserIcon />
             {copy.header.profile}
           </button>
           <button
@@ -50,6 +79,7 @@ function ProfileMenu({ copy, session, onOpenProfile }) {
             className="profile-popover__action profile-popover__action--danger"
             onClick={signOut}
           >
+            <LogoutOutlineIcon />
             {copy.header.signOut}
           </button>
         </div>

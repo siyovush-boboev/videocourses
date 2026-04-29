@@ -1,7 +1,47 @@
-function CourseDetailPage({ copy, course, language, onOpenTest }) {
+const getYoutubeEmbedUrl = (value) => {
+  const trimmedValue = value?.trim?.() || ''
+
+  if (!trimmedValue) return ''
+
+  if (/^[a-zA-Z0-9_-]{11}$/.test(trimmedValue)) {
+    return `https://www.youtube.com/embed/${trimmedValue}`
+  }
+
+  try {
+    const url = new URL(trimmedValue)
+
+    if (url.hostname.includes('youtu.be')) {
+      const idFromPath = url.pathname.split('/').filter(Boolean)[0] || ''
+      if (/^[a-zA-Z0-9_-]{11}$/.test(idFromPath)) {
+        return `https://www.youtube.com/embed/${idFromPath}`
+      }
+    }
+
+    if (url.hostname.includes('youtube.com')) {
+      const watchId = url.searchParams.get('v')
+      if (watchId && /^[a-zA-Z0-9_-]{11}$/.test(watchId)) {
+        return `https://www.youtube.com/embed/${watchId}`
+      }
+
+      const pathParts = url.pathname.split('/').filter(Boolean)
+      const embedIndex = pathParts.findIndex((part) => part === 'embed' || part === 'shorts')
+      const idFromPath = embedIndex >= 0 ? pathParts[embedIndex + 1] : pathParts[pathParts.length - 1]
+      if (/^[a-zA-Z0-9_-]{11}$/.test(idFromPath || '')) {
+        return `https://www.youtube.com/embed/${idFromPath}`
+      }
+    }
+  } catch {
+    return ''
+  }
+
+  return ''
+}
+
+function CourseDetailPage({ copy, course, language, onOpenTest, onGoHome }) {
   const requiredPercent = Math.round(
     (course.test.passingPoints / course.test.questions) * 100,
   )
+  const videoEmbedUrl = getYoutubeEmbedUrl(course.videoId)
 
   return (
     <section className="course-detail-page">
@@ -15,13 +55,15 @@ function CourseDetailPage({ copy, course, language, onOpenTest }) {
       <section className="course-video-card">
         <h2>{copy.courseDetail.videoTitle}</h2>
         <div className="course-video-card__frame">
-          <iframe
-            src={`https://www.youtube.com/embed/${course.videoId}`}
-            title={course.title[language]}
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerPolicy="strict-origin-when-cross-origin"
-            allowFullScreen
-          />
+          {videoEmbedUrl ? (
+            <iframe
+              src={videoEmbedUrl}
+              title={course.title[language]}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+            />
+          ) : null}
         </div>
       </section>
 
@@ -49,13 +91,22 @@ function CourseDetailPage({ copy, course, language, onOpenTest }) {
           </div>
         </dl>
 
-        <button
-          type="button"
-          className="course-test-card__button"
-          onClick={() => onOpenTest(course.id)}
-        >
-          {copy.courseDetail.action}
-        </button>
+        <div className="course-test-card__actions">
+          <button
+            type="button"
+            className="course-test-card__button course-test-card__button--secondary"
+            onClick={onGoHome}
+          >
+            {copy.courseDetail.allCourses}
+          </button>
+          <button
+            type="button"
+            className="course-test-card__button"
+            onClick={() => onOpenTest(course.id)}
+          >
+            {copy.courseDetail.action}
+          </button>
+        </div>
       </section>
     </section>
   )

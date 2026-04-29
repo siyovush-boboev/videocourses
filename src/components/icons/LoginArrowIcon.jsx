@@ -1,10 +1,7 @@
+import { LogIn } from 'lucide-react'
+
 function LoginArrowIcon() {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M10.25 4.75a.75.75 0 0 1 .75.75v2.5a.75.75 0 0 1-1.5 0v-1.75h-2A2.75 2.75 0 0 0 4.75 9v6A2.75 2.75 0 0 0 7.5 17.75h2V16a.75.75 0 0 1 1.5 0v2.5a.75.75 0 0 1-.75.75H7.5A4.25 4.25 0 0 1 3.25 15V9A4.25 4.25 0 0 1 7.5 4.75h2.75Z" />
-      <path d="M13.72 8.22a.75.75 0 0 1 1.06 0l3.25 3.25a.75.75 0 0 1 0 1.06l-3.25 3.25a.75.75 0 1 1-1.06-1.06l1.97-1.97H9.75a.75.75 0 0 1 0-1.5h5.94l-1.97-1.97a.75.75 0 0 1 0-1.06Z" />
-    </svg>
-  )
+  return <LogIn aria-hidden="true" strokeWidth={1.8} absoluteStrokeWidth />
 }
 
 export default LoginArrowIcon

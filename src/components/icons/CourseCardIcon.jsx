@@ -1,34 +1,19 @@
+import { FileText, MessageCircleMore, ShieldCheck, Wallet } from 'lucide-react'
+
 function CourseCardIcon({ type }) {
   if (type === 'shield') {
-    return (
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M12 2.75 5.5 5.2v5.44c0 4.39 2.58 8.47 6.5 10.61 3.92-2.14 6.5-6.22 6.5-10.61V5.2L12 2.75Zm0 2.14 4.75 1.79v3.96c0 3.4-1.89 6.62-4.75 8.48-2.86-1.86-4.75-5.08-4.75-8.48V6.68L12 4.89Z" />
-      </svg>
-    )
+    return <ShieldCheck aria-hidden="true" strokeWidth={1.8} absoluteStrokeWidth />
   }
 
   if (type === 'chat') {
-    return (
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M4.75 5.5h14.5A1.75 1.75 0 0 1 21 7.25v8.5a1.75 1.75 0 0 1-1.75 1.75H9.82l-4.14 3.32c-.55.44-1.34.05-1.34-.66V17.5h-.59A1.75 1.75 0 0 1 2 15.75v-8.5C2 6.28 2.78 5.5 3.75 5.5Zm.25 1.5a.25.25 0 0 0-.25.25v8.5c0 .14.11.25.25.25h1.34c.41 0 .75.34.75.75v1.86l2.97-2.38a.75.75 0 0 1 .47-.17h8.72a.25.25 0 0 0 .25-.25v-8.5a.25.25 0 0 0-.25-.25H5Z" />
-      </svg>
-    )
+    return <MessageCircleMore aria-hidden="true" strokeWidth={1.8} absoluteStrokeWidth />
   }
 
   if (type === 'wallet') {
-    return (
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M5.25 5h11.5A2.25 2.25 0 0 1 19 7.25V8h.5A2.5 2.5 0 0 1 22 10.5v6A2.5 2.5 0 0 1 19.5 19h-14A2.5 2.5 0 0 1 3 16.5v-9A2.5 2.5 0 0 1 5.5 5h-.25ZM17.5 8V7.25a.75.75 0 0 0-.75-.75H5.5a1 1 0 0 0 0 2h12Zm2 1.5h-14a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1Zm-2.75 4.75a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5Z" />
-      </svg>
-    )
+    return <Wallet aria-hidden="true" strokeWidth={1.8} absoluteStrokeWidth />
   }
 
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M5.75 3.5h8.56c.47 0 .91.19 1.24.51l3.44 3.44c.32.33.51.77.51 1.24v9.56A2.75 2.75 0 0 1 16.75 21h-11A2.75 2.75 0 0 1 3 18.25v-12.0A2.75 2.75 0 0 1 5.75 3.5Zm0 1.5a1.25 1.25 0 0 0-1.25 1.25v12a1.25 1.25 0 0 0 1.25 1.25h11A1.25 1.25 0 0 0 18 18.25V9.5h-2.75A1.75 1.75 0 0 1 13.5 7.75V5H5.75Zm9.25.56v2.19c0 .14.11.25.25.25h2.19L15 5.56Z" />
-      <path d="M7 12.25c0-.41.34-.75.75-.75h8.5a.75.75 0 0 1 0 1.5h-8.5a.75.75 0 0 1-.75-.75Zm0 3.5c0-.41.34-.75.75-.75h5.5a.75.75 0 0 1 0 1.5h-5.5a.75.75 0 0 1-.75-.75Z" />
-    </svg>
-  )
+  return <FileText aria-hidden="true" strokeWidth={1.8} absoluteStrokeWidth />
 }
 
 export default CourseCardIcon

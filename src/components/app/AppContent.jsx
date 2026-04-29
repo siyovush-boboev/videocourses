@@ -117,6 +117,7 @@ function AppContent() {
             course={selectedPublicCourse}
             language={language}
             onOpenTest={(id) => navigateTo(`/courses/${id}/test`)}
+            onGoHome={() => navigateTo('/')}
           />
         </PublicLayout>
       )

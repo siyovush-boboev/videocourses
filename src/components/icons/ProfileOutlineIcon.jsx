@@ -1,7 +1,7 @@
 import { UserRound } from 'lucide-react'
 
-function UserIcon() {
+function ProfileOutlineIcon() {
   return <UserRound aria-hidden="true" strokeWidth={1.8} absoluteStrokeWidth />
 }
 
-export default UserIcon
+export default ProfileOutlineIcon
