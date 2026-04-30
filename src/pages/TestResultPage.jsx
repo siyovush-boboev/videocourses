@@ -7,6 +7,7 @@ function TestResultPage({
   language,
   result,
   onRetake,
+  onOpenCourse,
   onGoHome,
   onViewCertificate,
 }) {
@@ -68,6 +69,13 @@ function TestResultPage({
             onClick={onRetake}
           >
             {copy.test.retake}
+          </button>
+          <button
+            type="button"
+            className="test-result-button"
+            onClick={onOpenCourse}
+          >
+            {copy.test.goToCourse}
           </button>
           <button
             type="button"

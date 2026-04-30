@@ -465,7 +465,7 @@ function DashboardPage({ copy, language, setLanguage, session, pathname, navigat
       [courseIdToSave]: result,
     }))
     setTryHistory((current) => [...current, nextTryEntry])
-    navigateTo(`/courses/${courseIdToSave}/test/result`)
+    navigateTo(`/courses/${courseIdToSave}/test/result`, { replace: true })
   }
 
   let content = <CoursesPage copy={copy} language={language} onOpenCourse={handleOpenCourse} />
@@ -532,6 +532,7 @@ function DashboardPage({ copy, language, setLanguage, session, pathname, navigat
         language={language}
         result={selectedResult}
         onRetake={() => handleOpenTest(selectedCourse.id)}
+        onOpenCourse={() => handleOpenCourse(selectedCourse.id)}
         onGoHome={handleLogoClick}
         onViewCertificate={() => handleOpenCertificate(selectedCourse.id)}
       />
